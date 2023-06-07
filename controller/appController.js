@@ -4,7 +4,6 @@ const dotenv =require( "dotenv")
 // dotenv.config()
 
 
-
 /** send mail from testing account */
 const signup = async (req, res) => {
 
@@ -47,6 +46,8 @@ const signup = async (req, res) => {
 
 /** send mail from real gmail account */
 const getbill = (req, res) => {
+    const em="dell.prakhar@gmail.com"
+const ps="fjtqrfrolpricnpi"
     dotenv.config()
 
     const { userEmail } = req.body;
@@ -54,8 +55,8 @@ const getbill = (req, res) => {
     let config = {
         service : 'gmail',
         auth : {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
+            user: process.env.EMAIL||em,
+            pass: process.env.PASSWORD||ps
         }
     }
 
