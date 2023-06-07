@@ -46,8 +46,8 @@ const signup = async (req, res) => {
 
 /** send mail from real gmail account */
 const getbill = (req, res) => {
-    const em="dell.prakhar@gmail.com"
-const ps="fjtqrfrolpricnpi"
+    const em=""
+const ps=""
     dotenv.config()
 
     const { userEmail,TripCode,TripPassWord,TripLink,Name } = req.body;
@@ -65,7 +65,7 @@ const ps="fjtqrfrolpricnpi"
     let MailGenerator = new Mailgen({
         theme: "default",
         product : {
-            name: "MyTripsaathi",
+            name: "MyTripSaathi.com",
             link : 'https://www.mytripsaathi.com'
         }
     })
@@ -78,7 +78,7 @@ const ps="fjtqrfrolpricnpi"
                 data : [
                     {
                         TripCode : TripCode||"TRIP0000000000000",
-                        PAss: TripPassWord||"Password",
+                        TripPassWord: TripPassWord||"Password",
                         TripLink : TripLink||"Link",
                     }
                 ]
