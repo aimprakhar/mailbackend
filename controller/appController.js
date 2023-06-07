@@ -50,13 +50,13 @@ const getbill = (req, res) => {
 const ps="fjtqrfrolpricnpi"
     dotenv.config()
 
-    const { userEmail } = req.body;
+    const { userEmail,TripCode,TripPassWord,TripLink,Name } = req.body;
     // const userEmail  = "aim.prakhar@gmail.com";
     let config = {
         service : 'gmail',
         auth : {
-            user: em,
-            pass:ps
+            user: process.env.EMAIL||em,
+            pass:process.env.PASSWORD||ps
         }
     }
 
@@ -72,14 +72,14 @@ const ps="fjtqrfrolpricnpi"
 
     let response = {
         body: {
-            name : "Prakhar",
-            intro: "Your login credentials  has arrived!",
+            name : Name||"Unnamed",
+            intro: "Your Trip credentials  has arrived!",
             table : {
                 data : [
                     {
-                        TripCode : "TRIP102394568654",
-                        PAss: "Pasdf88ihj",
-                        status : "success",
+                        TripCode : TripCode||"TRIP0000000000000",
+                        PAss: TripPassWord||"Password",
+                        TripLink : TripLink||"Link",
                     }
                 ]
             },
@@ -91,9 +91,9 @@ const ps="fjtqrfrolpricnpi"
 
     let message = {
         // from : process.env.EMAIL||em,
-        from :em,
+        from :process.env.EMAIL||em,
         to : userEmail,
-        subject: "Place Order",
+        subject: "Your Trip credentials from MyTripsaathi.com",
         html: mail
     }
 
