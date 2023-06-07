@@ -55,8 +55,8 @@ const ps="fjtqrfrolpricnpi"
     let config = {
         service : 'gmail',
         auth : {
-            user: process.env.EMAIL||em,
-            pass: process.env.PASSWORD||ps
+            user: em,
+            pass:ps
         }
     }
 
@@ -90,7 +90,8 @@ const ps="fjtqrfrolpricnpi"
     let mail = MailGenerator.generate(response)
 
     let message = {
-        from : process.env.EMAIL,
+        // from : process.env.EMAIL||em,
+        from :em,
         to : userEmail,
         subject: "Place Order",
         html: mail
